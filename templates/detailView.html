@@ -1,0 +1,37 @@
+{% extends 'main.html' %} 
+
+{% block content %}
+
+<div class="mr-auto">
+    <h1 class="my-5 text-3xl font-bold leading-9 tracking-tight text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+  {{ posts.title }}
+</h1>
+{% if posts.coverpic %}
+<div class="">
+    <img class="object-center" src={{posts.coverpic.url}}>
+</div>
+{% endif %}
+
+<p class="text-lg my-2 leading-7 text-gray-400 my-20">
+  {{posts.body}}
+</p>
+</div>
+
+
+<hr class="text-white">
+
+<form action="" method="POST">
+{% csrf_token %}
+  <input class="my-3 w-full rounded-full py-3 text-center focus:outline-cyan-500" type="submit" placeholder="Enter comment..."/>
+  <!-- <button type="submit"></button> -->
+</form>
+
+
+<h1 class="text-white text-bold text-2xl mt-2">Comment ({{commentCount}})</h1>
+
+{% for comment in comments %}
+<h1 class="text-white text-semibold">
+  {{ comment }}
+</h1>
+{% endfor %}
+{% endblock content %}
